@@ -1,6 +1,6 @@
 
 // to show current day
-// obtained from https://medium.com/@aleks.roslyakov/using-css-grid-jquery-making-a-daily-scheduler-pt-ii-7af7d239a55d
+// adapted from https://medium.com/@aleks.roslyakov/using-css-grid-jquery-making-a-daily-scheduler-pt-ii-7af7d239a55d
 let d = new Date();
 
 let year = d.getFullYear();
@@ -22,8 +22,8 @@ var checkTime = function () {
     //Get Current time
     var currentTime = moment().format('H');
 
-    //get all one-hour time blocks with class "time-block"
-    var timeBlockElements = $(".time-block");
+    //get all one-hour time blocks with class "textarea"
+    var timeBlockElements = $(".textarea");
 
     //loop through time block classes
     for (var i = 0 ; i < timeBlockElements.length ; i++) {
@@ -50,3 +50,32 @@ var checkTime = function () {
 
 // checkTime every 5 minutes
 setInterval(checkTime(), (1000 * 60) * 5);
+
+
+// save tasks
+
+var loadTasks = function() {
+  tasks = JSON.parse(localStorage.getItem("tasks"));
+
+  // if nothing in localStorage, create a new object to track all task status arrays
+  if (!tasks) {
+    tasks = {
+      toDo: [],
+      inProgress: [],
+      inReview: [],
+      done: []
+    };
+  }
+
+  // loop over object properties
+  $.each(tasks, function(list, arr) {
+    // then loop over sub-array
+    arr.forEach(function(task) {
+      createTask(task.text, task.date, list);
+    });
+  });
+};
+
+var saveTasks = function() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+};
