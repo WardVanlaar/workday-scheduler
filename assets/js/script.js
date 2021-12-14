@@ -52,30 +52,30 @@ var checkTime = function () {
 setInterval(checkTime(), (1000 * 60) * 5);
 
 
-// save tasks
+// creating, loading and saving tasks persistently
+var events = {};
 
-var loadTasks = function() {
-  tasks = JSON.parse(localStorage.getItem("tasks"));
+var loadEvents = function() {
+  events = JSON.parse(localStorage.getItem("events"));
 
-  // if nothing in localStorage, create a new object to track all task status arrays
-  if (!tasks) {
-    tasks = {
-      toDo: [],
-      inProgress: [],
-      inReview: [],
-      done: []
-    };
+  if (!events) {
+    events = {};
   }
 
-  // loop over object properties
-  $.each(tasks, function(list, arr) {
-    // then loop over sub-array
-    arr.forEach(function(task) {
-      createTask(task.text, task.date, list);
+  $(".saveBtn").click(function() {
+    var eventText = $(".textarea").val();
+
+    // events.push({
+    //     text: eventText,
+    // });
+  
+    saveEvents();
     });
-  });
 };
 
-var saveTasks = function() {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+var saveEvents = function() {
+    localStorage.setItem("events", JSON.stringify(events));
 };
+  
+saveEvents();
+loadEvents();
