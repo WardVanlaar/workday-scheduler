@@ -13,6 +13,7 @@ You can download the source code here: https://github.com/WardVanlaar/workday-sc
 Or you can launch the application here: https://wardvanlaar.github.io/workday-scheduler/.
 This is what it should look like:
 
+![image](https://user-images.githubusercontent.com/91222837/146218974-ff9f6d7d-64e8-4fd7-bbd2-4848c978a258.png)
 
 
 ## Contribution
