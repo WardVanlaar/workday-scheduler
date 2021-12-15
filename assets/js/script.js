@@ -52,14 +52,15 @@ var checkTime = function () {
 setInterval(checkTime(), (1000 * 60) * 2);
 
 
-// saving tasks persistently
+// saving tasks persistently and retrieving
+
+const businessHours = ["9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM",];
 
 const events = JSON.parse(localStorage.getItem(".textarea #09")) || [];
-    console.log(events);
 
-$(".saveBtn09").click(function()  {
+$("#saveBtn1").click(function()  {
     const event = {
-        text: events.value,
+        text: events.textContent,
     };
 
     events.push(event);
@@ -67,3 +68,4 @@ $(".saveBtn09").click(function()  {
     localStorage.setItem(".textarea #09", JSON.stringify(events));
     console.log(events);
 });
+
