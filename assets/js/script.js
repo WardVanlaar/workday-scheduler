@@ -57,18 +57,30 @@ setInterval(checkTime(), (1000 * 60) * 2);
 
 const businessHours = ["9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM",];
 
-
+// arr.forEach(function(task) {
+//     createTask(task.text, task.date, list);
+//   });
 
 var loadEvents = function() {
     $("#09").val(localStorage.getItem("hour-9"));
+    $("#10").val(localStorage.getItem("hour-10"));
+    $("#11").val(localStorage.getItem("hour-11"));
+    $("#12").val(localStorage.getItem("hour-12"));
+    $("#13").val(localStorage.getItem("hour-13"));
+    $("#14").val(localStorage.getItem("hour-14"));
+    $("#15").val(localStorage.getItem("hour-15"));
+    $("#16").val(localStorage.getItem("hour-16"));
+    $("#17").val(localStorage.getItem("hour-17"));
 }
 
-$("#saveBtn9").click(function(event)  {
-    var textValue = $(this).siblings(".textarea").val();
-    var time = $(this).parent().attr("id")
-    console.log(time);
+for (i = 0; i < businessHours.length; i++) {
+    $(".saveBtn").click(function(event)  {
+        var textValue = $(this).siblings(".textarea").val();
+        var time = $(this).parent().attr("id")
+        console.log(time);
     
-    localStorage.setItem(time, textValue);
-});
+        localStorage.setItem(time, textValue);
+    });
+};
 
-loadEvents();
+loadEvents()
