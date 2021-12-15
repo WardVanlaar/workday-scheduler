@@ -57,16 +57,18 @@ setInterval(checkTime(), (1000 * 60) * 2);
 
 const businessHours = ["9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM",];
 
-const events = JSON.parse(localStorage.getItem(".textarea")) || [];
 
-$("#saveBtn1").click(function(event)  {
+
+var loadEvents = function() {
+    $("#09").val(localStorage.getItem("hour-9"));
+}
+
+$("#saveBtn9").click(function(event)  {
     var textValue = $(this).siblings(".textarea").val();
     var time = $(this).parent().attr("id")
     console.log(time);
     
-    events.push(event);
-    
     localStorage.setItem(time, textValue);
-    // console.log(events);
 });
 
+loadEvents();
