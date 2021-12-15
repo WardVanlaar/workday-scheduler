@@ -21,6 +21,7 @@ var checkTime = function () {
 
     //Get Current time
     var currentTime = moment().format('H');
+    console.log(currentTime);
 
     //get all one-hour time blocks with class "textarea"
     var timeBlockElements = $(".textarea");
@@ -48,34 +49,26 @@ var checkTime = function () {
     }
 }
 
-// checkTime every 5 minutes
-setInterval(checkTime(), (1000 * 60) * 5);
+// checkTime every 2 minutes
+setInterval(checkTime(), (1000 * 60) * 2);
 
 
-// save tasks
+// saving tasks persistently and retrieving
 
-var loadTasks = function() {
-  tasks = JSON.parse(localStorage.getItem("tasks"));
+const businessHours = ["9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM",];
 
-  // if nothing in localStorage, create a new object to track all task status arrays
-  if (!tasks) {
-    tasks = {
-      toDo: [],
-      inProgress: [],
-      inReview: [],
-      done: []
-    };
-  }
 
-  // loop over object properties
-  $.each(tasks, function(list, arr) {
-    // then loop over sub-array
-    arr.forEach(function(task) {
-      createTask(task.text, task.date, list);
-    });
-  });
-};
 
-var saveTasks = function() {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-};
+var loadEvents = function() {
+    $("#09").val(localStorage.getItem("hour-9"));
+}
+
+$("#saveBtn9").click(function(event)  {
+    var textValue = $(this).siblings(".textarea").val();
+    var time = $(this).parent().attr("id")
+    console.log(time);
+    
+    localStorage.setItem(time, textValue);
+});
+
+loadEvents();
