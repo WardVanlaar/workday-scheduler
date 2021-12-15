@@ -21,6 +21,7 @@ var checkTime = function () {
 
     //Get Current time
     var currentTime = moment().format('H');
+    console.log(currentTime);
 
     //get all one-hour time blocks with class "textarea"
     var timeBlockElements = $(".textarea");
@@ -56,16 +57,16 @@ setInterval(checkTime(), (1000 * 60) * 2);
 
 const businessHours = ["9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM",];
 
-const events = JSON.parse(localStorage.getItem(".textarea #09")) || [];
+const events = JSON.parse(localStorage.getItem(".textarea")) || [];
 
-$("#saveBtn1").click(function()  {
-    const event = {
-        text: events.textContent,
-    };
-
+$("#saveBtn1").click(function(event)  {
+    var textValue = $(this).siblings(".textarea").val();
+    var time = $(this).parent().attr("id")
+    console.log(time);
+    
     events.push(event);
     
-    localStorage.setItem(".textarea #09", JSON.stringify(events));
-    console.log(events);
+    localStorage.setItem(time, textValue);
+    // console.log(events);
 });
 
