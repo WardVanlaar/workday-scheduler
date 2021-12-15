@@ -1,4 +1,4 @@
-# Quiz
+# Workday-scheduler
 
 ## Purpose
 This application is a workday-scheduler allowing the user to enter events/tasks for business hours (9am - 5 pm) of the current day.
