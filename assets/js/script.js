@@ -48,34 +48,22 @@ var checkTime = function () {
     }
 }
 
-// checkTime every 5 minutes
-setInterval(checkTime(), (1000 * 60) * 5);
+// checkTime every 2 minutes
+setInterval(checkTime(), (1000 * 60) * 2);
 
 
-// creating, loading and saving tasks persistently
-var events = {};
+// saving tasks persistently
 
-var loadEvents = function() {
-  events = JSON.parse(localStorage.getItem("events"));
+const events = JSON.parse(localStorage.getItem(".textarea #09")) || [];
+    console.log(events);
 
-  if (!events) {
-    events = {};
-  }
+$(".saveBtn09").click(function()  {
+    const event = {
+        text: events.value,
+    };
 
-  $(".saveBtn").click(function() {
-    var eventText = $(".textarea").val();
-
-    // events.push({
-    //     text: eventText,
-    // });
-  
-    saveEvents();
-    });
-};
-
-var saveEvents = function() {
-    localStorage.setItem("events", JSON.stringify(events));
-};
-  
-saveEvents();
-loadEvents();
+    events.push(event);
+    
+    localStorage.setItem(".textarea #09", JSON.stringify(events));
+    console.log(events);
+});
