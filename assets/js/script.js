@@ -7,8 +7,6 @@ let year = d.getFullYear();
 let month = d.getMonth()+1;
 let day = d.getDate();
 
-    //let totalDays = new Date(year, month, 0).getDate();
-
 let output = (month<10 ? '0' : '') + month + '/' + (day<10 ? '0' : '') + day + '/' + year;
 
 $("#currentDay").text(`${output}`);
@@ -55,11 +53,7 @@ setInterval(checkTime(), (1000 * 60) * 2);
 
 // saving tasks persistently and retrieving
 
-const businessHours = ["9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM",];
-
-// arr.forEach(function(task) {
-//     createTask(task.text, task.date, list);
-//   });
+const businessHours = ["9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM"];
 
 var loadEvents = function() {
     $("#09").val(localStorage.getItem("hour-9"));
